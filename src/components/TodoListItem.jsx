@@ -1,7 +1,11 @@
-function TodoListItem() {
+function TodoListItem({todo}) {
+    const { id, text, checked }  = todo 
+
     return ( 
-        <div>
-            TodoListItem
+        <div style={{ textDecoration: checked ? 'line-through' : 'none' }}>
+            <input type="checkbox" checked={checked} />
+            {id}<span>{text}</span>
+            <button>삭제</button>
         </div> 
     );
 }

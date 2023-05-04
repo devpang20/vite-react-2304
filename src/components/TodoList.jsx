@@ -1,12 +1,13 @@
-function TodoList() {
+import TodoListItem from "./TodoListItem";
+
+function TodoList({ todos }) {
     return ( 
         <div>
-            <ul>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-            </ul>
+            {todos.map(todo => (
+                <TodoListItem 
+                    todo={todo}
+                />
+            ))}
         </div> 
     );
 }
