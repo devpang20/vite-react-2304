@@ -1,11 +1,11 @@
-function TodoListItem({todo}) {
+function TodoListItem({todo, onDelete, onToggle}) {
     const { id, text, checked }  = todo 
 
     return ( 
         <div style={{ textDecoration: checked ? 'line-through' : 'none' }}>
-            <input type="checkbox" checked={checked} />
+            <input type="checkbox" checked={checked} onChange={() => onToggle(id)} />
             {id}<span>{text}</span>
-            <button>삭제</button>
+            <button onClick={() => onDelete(id)}>삭제</button>
         </div> 
     );
 }

@@ -21,10 +21,22 @@ function App() {
     }
   ])
 
+  const onToggle = (id) => {
+    setTodos(
+      todos.map(todo => 
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo  
+      )
+    )
+  }
+
+  const onDelete = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
+
   return (
     <div>
       <TodoInsert />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onDelete={onDelete} onToggle={onToggle} />
     </div>
   )
 }
