@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import TodoInsert from "./components/TodoInsert"
 import TodoList from "./components/TodoList"
+import TodoTemplate from "./components/Todotemplate"
 
 function App() {
   const [todos, setTodos] = useState([
@@ -49,10 +50,10 @@ const nextId = useRef(3)
   }
 
   return (
-    <div>
+    <TodoTemplate>
       <TodoInsert onInsert={onInsert} />
       <TodoList todos={todos} onDelete={onDelete} onToggle={onToggle} />
-    </div>
+    </TodoTemplate>
   )
 }
 
