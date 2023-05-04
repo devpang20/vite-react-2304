@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import TodoInsert from "./components/TodoInsert"
 import TodoList from "./components/TodoList"
 
@@ -21,6 +21,21 @@ function App() {
     }
   ])
 
+const nextId = useRef(3)
+
+ const onInsert = (text) => {
+    setTodos(
+      todos.concat([
+        {
+          id: nextId.current + 1,
+          text,
+          checked: false
+        }
+      ])
+    )
+    nextId.current++
+ }
+
   const onToggle = (id) => {
     setTodos(
       todos.map(todo => 
@@ -35,7 +50,7 @@ function App() {
 
   return (
     <div>
-      <TodoInsert />
+      <TodoInsert onInsert={onInsert} />
       <TodoList todos={todos} onDelete={onDelete} onToggle={onToggle} />
     </div>
   )

@@ -5,6 +5,7 @@ function TodoList({ todos, onDelete, onToggle }) {
         <div>
             {todos.map(todo => (
                 <TodoListItem 
+                    key={todo.id}
                     todo={todo}
                     onDelete={onDelete}
                     onToggle={onToggle}
